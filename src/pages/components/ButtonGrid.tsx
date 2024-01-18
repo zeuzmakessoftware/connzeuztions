@@ -7,17 +7,17 @@ interface ButtonGridProps {
   onButtonClick: (value: string) => void;
 }
 
-const ButtonGrid: React.FC<ButtonGridProps> = ({ values, selectedValues, onButtonClick }) => (
-  <div className="grid grid-cols-4 gap-1">
-    {values.map((value, index) => (
-      <ConnectButton
-        key={value}
-        value={value}
-        clicked={selectedValues.includes(value)}
-        onButtonClick={() => onButtonClick(value)} 
-      />
-    ))}
-  </div>
-);
+const ButtonGrid: React.FC<ButtonGridProps> = ({ values = [], selectedValues = [], onButtonClick }) => (
+    <div className="grid grid-cols-4 gap-1">
+      {(values || []).map((value, index) => (
+        <ConnectButton
+          key={value}
+          value={value}
+          clicked={selectedValues.includes(value)}
+          onButtonClick={() => onButtonClick(value)} 
+        />
+      ))}
+    </div>
+  );
 
 export default ButtonGrid;
