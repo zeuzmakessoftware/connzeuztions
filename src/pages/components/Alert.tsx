@@ -7,10 +7,6 @@ interface AlertProps {
 
 const Alert: React.FC<AlertProps> = ({alertValue, setAlertValue}) => {
 
-  if (alertValue == "") {
-    return null;
-  }
-
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       console.log('Timeout completed!');
@@ -20,6 +16,9 @@ const Alert: React.FC<AlertProps> = ({alertValue, setAlertValue}) => {
     return () => clearTimeout(timeoutId);
   }, []);
 
+  if (alertValue == "") {
+    return null;
+  }
   
   return(
     <div>
